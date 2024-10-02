@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
-    'authentication.apps.AuthenticationConfig'
+    'authentication.apps.AuthenticationConfig',
+    'adminApp.apps.AdminappConfig',
+    'doctorApp.apps.DoctorappConfig',
+    'patientApp.apps.PatientappConfig',
+    
 ]
 
 MIDDLEWARE = [
