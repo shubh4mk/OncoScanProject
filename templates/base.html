@@ -103,15 +103,15 @@
       </nav>
 
       <!-- Dynamic User Authentication Links -->
-    {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
       <div class="dropdown">
         <button class="dropbtn">{{ user.first_name }}</button>
         <div class="dropdown-content">
           {% if user.is_superuser %}
           <a href="{% url 'admin_dashboard' %}">Dashboard</a>
-          {% elif user.profile.role == 'doctor' %}
+          {% elif user_type == 'Doctor' %}
           <a href="{% url 'doctor_dashboard' %}">Dashboard</a>
-          {% elif user.profile.role == 'patient' %}
+          {% elif user_type == 'Patient' %}
           <a href="{% url 'patient_dashboard' %}">Dashboard</a>
           {% endif %}
           <a href="{% url 'signout' %}">Logout</a>
