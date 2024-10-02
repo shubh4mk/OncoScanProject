@@ -1,0 +1,480 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block content %}
+<main>
+    <article>
+        <!-- 
+          - #HERO
+        -->
+        <section class="section hero"
+            style="background-image: url('C:\Users\kshub\OneDrive\Desktop\OncoScanProject\OncoScan\static\images\hero-banner.png')"
+            aria-label="home">
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <p class="hero-subtitle has-before" data-reveal="left">Welcome To OncoScan</p>
+
+                    <h1 class="headline-lg hero-title" data-reveal="left">
+                        {% if user.is_authenticated %}
+                        {{user.first_name}} <br>
+                        {{user.last_name}}
+                        {% else %}
+                        We are at your <br>
+                        Service
+                        {% endif %}
+                    </h1>
+                </div>
+
+                <figure class="hero-banner" data-reveal="right">
+                    <img src="{% static 'images/hero-banner.png' %}" width="590" height="517" loading="eager"
+                        alt="hero banner" class="w-100">
+                </figure>
+
+            </div>
+        </section>
+
+        <!-- 
+            - #SERVICE
+        -->
+
+        <section class="service" aria-label="service">
+            <div class="container">
+
+                <ul class="service-list">
+
+                    <li>
+                        <div class="service-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/registerImage.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <h3 class="headline-sm card-title">
+                                <a href="#">Register Yourself</a>
+                            </h3>
+
+                            <p class="card-text">
+                                Join us, we are here to support you.
+                            </p>
+
+                            <button class="btn-circle" aria-label="Register yourself">
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="service-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/login-image.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <h3 class="headline-sm card-title">
+                                <a href="#">Login</a>
+                            </h3>
+
+                            <p class="card-text">
+                                Use your credentials to get you login to your dashboard.
+                            </p>
+
+                            <button class="btn-circle" aria-label="Login yourself">
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="service-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/upload.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <h3 class="headline-sm card-title">
+                                <a href="#">Scan Upload</a>
+                            </h3>
+
+                            <p class="card-text">
+                                Upload your scans image to get the results.
+                            </p>
+
+                            <button class="btn-circle" aria-label="Upload scan images">
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="service-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/save.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <h3 class="headline-sm card-title">
+                                <a href="#">Save Results</a>
+                            </h3>
+
+                            <p class="card-text">
+                                Save the results to your device. For futher requirement.
+                            </p>
+
+                            <button class="btn-circle" aria-label="Save results">
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 
+            - #ABOUT
+        -->
+
+        <section class="section about" aria-labelledby="about-label">
+            <div class="container">
+
+                <div class="about-content">
+
+                    <p class="section-subtitle title-lg has-after" id="about-label" data-reveal="left">About Us</p>
+
+                    <h2 class="headline-md" data-reveal="left">Experienced Workers</h2>
+
+                    <p class="section-text" data-reveal="left">
+                        Xyz zyz zyzyz zyzyz
+                    </p>
+
+                    <ul class="tab-list" data-reveal="left">
+
+                        <li>
+                            <button class="tab-btn active">Vision</button>
+                        </li>
+
+                        <li>
+                            <button class="tab-btn">Mission</button>
+                        </li>
+
+                        <li>
+                            <button class="tab-btn">Strategy</button>
+                        </li>
+
+                    </ul>
+
+                    <p class="tab-text" data-reveal="right">
+                        Xyz zyz zyzyz zyzyz
+                    </p>
+
+                    <div class="wrapper">
+
+                        <ul class="about-list">
+
+                            <li class="about-item" data-reveal="left">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                                <span class="span">Sonsectetur adipisicing elit</span>
+                            </li>
+
+                            <li class="about-item" data-reveal="left">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                                <span class="span">Exercitation ullamco laboris</span>
+                            </li>
+
+                            <li class="about-item" data-reveal="left">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                                <span class="span">Eiusmod tempor incididunt</span>
+                            </li>
+
+                            <li class="about-item" data-reveal="left">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                                <span class="span">Aolore magna aliqua</span>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <figure class="about-banner" data-reveal="right">
+                    <img src="{% static 'images/about-banner.png' %}" width="554" height="678" loading="lazy"
+                        alt="about banner" class="w-100">
+                </figure>
+
+            </div>
+        </section>
+
+        <!-- 
+            - #LISTING
+        -->
+
+        <section class="section listing" aria-labelledby="listing-label">
+            <div class="container">
+
+                <ul class="grid-list">
+
+                    <li>
+                        <p class="section-subtitle title-lg" id="listing-label" data-reveal="left">Doctors Listig</p>
+
+                        <h2 class="headline-md" data-reveal="left">Browse by specialist</h2>
+                    </li>
+
+                    <li>
+                        <div class="listing-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/seth.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <div>
+                                <h3 class="headline-sm card-title">Breast cancer</h3>
+
+                                <p class="card-text">Roman Reigns</p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="listing-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/seth.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <div>
+                                <h3 class="headline-sm card-title">Thyroid Cancer</h3>
+
+                                <p class="card-text">The rock</p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="listing-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/seth.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <div>
+                                <h3 class="headline-sm card-title">Skin Cancer</h3>
+
+                                <p class="card-text">John Cena</p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="listing-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/seth.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <div>
+                                <h3 class="headline-sm card-title">Lung Cancer</h3>
+
+                                <p class="card-text">Brock Lesner</p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="listing-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/seth.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <div>
+                                <h3 class="headline-sm card-title">Prostate Cancer</h3>
+
+                                <p class="card-text">Shawn Michles</p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="listing-card" data-reveal="bottom">
+
+                            <div class="card-icon">
+                                <img src="{% static 'images/seth.png' %}" width="71" height="71" loading="lazy"
+                                    alt="icon">
+                            </div>
+
+                            <div>
+                                <h3 class="headline-sm card-title">Brain Tumor</h3>
+
+                                <p class="card-text">Triple H</p>
+                            </div>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+        <!-- 
+            - #BLOG
+        -->
+
+        <section class="section blog" aria-labelledby="blog-label">
+            <div class="container">
+
+                <p class="section-subtitle title-lg text-center" id="blog-label" data-reveal="bottom">
+                    News & Article
+                </p>
+
+                <h2 class="section-title headline-md text-center" data-reveal="bottom">Latest Articles</h2>
+
+                <ul class="grid-list">
+
+                    <li>
+                        <div class="blog-card has-before has-after" data-reveal="bottom">
+
+                            <div class="meta-wrapper">
+
+                                <div class="card-meta">
+                                    <ion-icon name="person-outline"></ion-icon>
+
+                                    <span class="span">Published By</span>
+                                </div>
+
+                                <div class="card-meta">
+                                    <ion-icon name="folder-outline"></ion-icon>
+
+                                    <span class="span">Role</span>
+                                </div>
+
+                            </div>
+
+                            <h3 class="headline-sm card-title">User Blog title</h3>
+
+                            <time class="title-sm date" datetime="2022-01-28">Publish date</time>
+
+                            <p class="card-text">
+                                Publish Content
+                            </p>
+
+                            <a href="#" class="btn-text title-lg">Read More</a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="blog-card has-before has-after" data-reveal="bottom">
+
+                            <div class="meta-wrapper">
+
+                                <div class="card-meta">
+                                    <ion-icon name="person-outline"></ion-icon>
+
+                                    <span class="span">Published By</span>
+                                </div>
+
+                                <div class="card-meta">
+                                    <ion-icon name="folder-outline"></ion-icon>
+
+                                    <span class="span">Role</span>
+                                </div>
+
+                            </div>
+
+                            <h3 class="headline-sm card-title">User Blog title</h3>
+
+                            <time class="title-sm date" datetime="2022-01-28">Publish Date</time>
+
+                            <p class="card-text">
+                                Blog Content
+                            </p>
+
+                            <a href="#" class="btn-text title-lg">Read More</a>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="blog-card has-before has-after" data-reveal="bottom">
+
+                            <div class="meta-wrapper">
+
+                                <div class="card-meta">
+                                    <ion-icon name="person-outline"></ion-icon>
+
+                                    <span class="span">Publish bhy</span>
+                                </div>
+
+                                <div class="card-meta">
+                                    <ion-icon name="folder-outline"></ion-icon>
+
+                                    <span class="span">Role</span>
+                                </div>
+
+                            </div>
+
+                            <h3 class="headline-sm card-title">Blog title</h3>
+
+                            <time class="title-sm date" datetime="2022-01-28">Publish Date</time>
+
+                            <p class="card-text">
+                                Blog content
+                            </p>
+
+                            <a href="#" class="btn-text title-lg">Read More</a>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+    </article>
+</main>
+{% endblock content %}
+
+<!-- 
+    - #BACK TO TOP
+-->
+
+<a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+</a>
+
+
+
+<!-- 
+    - custom js link
+-->
+<script src="{% static 'js/script.js' %}"></script>
+
+<!-- 
+    - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
