@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=30)
     date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pictures/', default='profile_pictures/default.jpg')
     user_type = models.CharField(max_length=10, choices=[('Doctor', 'Doctor'), ('Patient', 'Patient')], null=True, blank=True)
 
     def __str__(self):

@@ -19,3 +19,7 @@ urlpatterns = [
     path('doctor_dashboard/', doctor_dashboard, name="doctor_dashboard"),
     path('patient_dashboard/', patient_dashboard, name="patient_dashboard"),
 ]
+
+# Serving media files during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
