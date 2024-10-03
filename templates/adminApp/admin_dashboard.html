@@ -1,251 +1,159 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css\styles_dashboard.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <title>Hello - {{user.first_name}}</title>
-  <!-- Materialize CSS -->
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Internal CSS -->
-  <style>
-    /* General Body Styles */
-    body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Side Nav Styles */
-    .side-nav.fixed {
-        background-color: #3949ab;
-        width: 240px;
-        padding-top: 10px;
-    }
-
-    .side-nav.fixed li a {
-        color: white;
-        font-size: 1.2rem;
-    }
-
-    .side-nav.fixed li a:hover {
-        background-color: #303f9f;
-        border-radius: 5px;
-        padding: 10px;
-    }
-
-    .collapsible-header {
-        background-color: #3f51b5;
-        color: white;
-    }
-
-    .collapsible-body {
-        background-color: #e8eaf6;
-    }
-
-    /* Navbar Styles */
-    nav {
-        background-color: #3949ab !important;
-    }
-
-    nav .nav-wrapper .right li a {
-        color: white;
-        font-size: 1.2rem;
-    }
-
-    nav .nav-wrapper .breadcrumb {
-        font-weight: 500;
-    }
-
-    /* Card Styles */
-    .card {
-        background-color: white;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .card .card-title {
-        font-size: 1.5rem;
-        color: #3949ab;
-    }
-
-    .card .material-icons {
-        font-size: 3rem;
-        color: #3949ab;
-    }
-
-    /* Footer Styles */
-    footer {
-        background-color: #3949ab;
-        color: white;
-        padding: 10px 0;
-        text-align: center;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Side Navigation -->
-  <ul id="slide-out" class="side-nav fixed z-depth-2">
-    <li class="center no-padding">
-      <div class="indigo darken-2 white-text" style="height: 180px;">
-        <div class="row">
-          <img style="margin-top: 5%;" width="100" height="100" src="{% static 'images/photo.png' %}" class="circle responsive-img" />
-          <p style="margin-top: -13%;">OncoScan</p>
+  <div class="menu">
+    <ul>
+      <li class="profile">
+        <div class="img-box">
+          <img
+            src="{% if user.profile_picture %}{{ user.profile_picture }}{% else %}{% static 'profile_pictures/default.png' %}{% endif %}"
+            alt="Profile Image">
         </div>
-      </div>
-    </li>
-
-    <li id="dash_dashboard"><a class="waves-effect" href="{% url 'admin_dashboard' %}"><b>Dashboard</b></a></li>
-
-    <ul class="collapsible" data-collapsible="accordion">
-      <li id="dash_users">
-        <div id="dash_users_header" class="collapsible-header waves-effect"><b>Users</b></div>
-        <div id="dash_users_body" class="collapsible-body">
-          <ul>
-            <li id="users_doctor">
-              <a class="waves-effect" href="#">Doctors</a>
-            </li>
-            <li id="users_patient">
-              <a class="waves-effect" href="#">Patients</a>
-            </li>
-          </ul>
-        </div>
+        <h2>{{ user.first_name }}</h2>
       </li>
-
-      <li id="dash_records">
-        <div id="dash_records_header" class="collapsible-header waves-effect"><b>Patients</b></div>
-        <div id="dash_records_body" class="collapsible-body">
-          <ul>
-            <li id="patients_records">
-              <a class="waves-effect" href="#">Records</a>
-            </li>
-            <li id="patients_reports">
-              <a class="waves-effect" href="#">Reports</a>
-            </li>
-          </ul>
-        </div>
+      <li>
+        <a href="{% url 'admin_dashboard' %}">
+          <i class="fas fa-home"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-user-group"></i>
+          <p>Users</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-chart-pie"></i>
+          <p>Charts</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-pen"></i>
+          <p>Blogs</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-cog"></i>
+          <p>Settings</p>
+        </a>
+      </li>
+      <li class="log-out">
+        <a href="#">
+          <i class="fas fa-sign-out"></i>
+          <p>Log Out</p>
+        </a>
       </li>
     </ul>
-  </ul>
 
-  <!-- Main Content -->
-  <header>
-    <ul class="dropdown-content" id="user_dropdown">
-      <li><a class="indigo-text" href="#">Profile</a></li>
-      <li><a class="indigo-text" href="{% url 'signout' %}">Logout</a></li>
-    </ul>
+  </div>
 
-    <nav class="indigo" role="navigation">
-      <div class="nav-wrapper">
-        <a href="#" data-activates="slide-out" class="button-collapse show-on-"><img style="margin-top: 17px; margin-left: 5px;" src="{% static 'images/smaller-main-logo.gif' %}" /></a>
-        <ul class="right hide-on-med-and-down">
-          <li>
-            <a class='dropdown-button' href='#' data-activates='user_dropdown'><i class='material-icons'>account_circle</i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <nav>
-      <div class="nav-wrapper indigo darken-2">
-        <a style="margin-left: 20px;" class="breadcrumb" href="{% url 'admin_dashboard' %}">Admin</a>
-        <a class="breadcrumb" href="#!">Dashboard</a>
-        <div style="margin-right: 20px;" id="timestamp" class="right"></div>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Admin Dashboard Widgets -->
-    <div class="row">
-      <div class="col s6">
-        <div class="card" style="padding: 35px;">
-          <div class="left card-title"><b>Doctor Management</b></div>
-          <div class="row">
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">person</i>
-                <span class="indigo-text text-lighten-1"><h5>Doctors</h5></span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">people</i>
-                <span class="indigo-text text-lighten-1"><h5>Degree</h5></span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s6">
-        <div class="card" style="padding: 35px;">
-          <div class="left card-title"><b>Patient Management</b></div>
-          <div class="row">
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">store</i>
-                <span class="indigo-text text-lighten-1"><h5>Patients</h5></span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">assignment</i>
-                <span class="indigo-text text-lighten-1"><h5>History</h5></span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
+  <div class="content">
+    <div class="title-info">
+      <p>Dashboard</p>
+      <i class="fas fa-chart-bar"></i>
     </div>
-
-    <div class="row">
-      <div class="col s6">
-        <div class="card" style="padding: 35px;">
-          <div class="left card-title"><b>Website Management</b></div>
-          <div class="row">
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">local_offer</i>
-                <span class="indigo-text text-lighten-1"><h5>Chatbot</h5></span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">loyalty</i>
-                <span class="indigo-text text-lighten-1"><h5>Settings</h5></span>
-              </div>
-            </a>
-          </div>
+    <div class="data-info">
+      <div class="box">
+        <i class="fas fa-user"></i>
+        <div class="data">
+          <p>Verified Doctors</p>
+          <span>100</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-user"></i>
+        <div class="data">
+          <p>Unverified Doctors</p>
+          <span>10</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-user"></i>
+        <div class="data">
+          <p>Patients</p>
+          <span>200</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-pen"></i>
+        <div class="data">
+          <p>Blogs</p>
+          <span>200</span>
         </div>
       </div>
 
-      <div class="col s6">
-        <div class="card" style="padding: 35px;">
-          <div class="left card-title"><b>Global Management</b></div>
-          <div class="row">
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">view_list</i>
-                <span class="indigo-text text-lighten-1"><h5>Visuals</h5></span>
-              </div>
-            </a>
-            <a href="#">
-              <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
-                <i class="indigo-text text-lighten-1 large material-icons">view_list</i>
-                <span class="indigo-text text-lighten-1"><h5>Info</h5></span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </main>
+    <div class="title-info">
+      <p>RECENT CHAT</p>
+      <i class="fas fa-table"></i>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>xyz</td>
+          <td><span class="price">Doctor</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>tre</td>
+          <td><span class="price">Doctor</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>gre</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">ACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>VVV</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>jjj</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">ACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>mmj</td>
+          <td><span class="price">Doctor</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>ewd</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <!-- Materialize JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  </div>
+
+
 </body>
+
 </html>

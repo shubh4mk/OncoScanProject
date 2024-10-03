@@ -1,0 +1,159 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css\styles_dashboard.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <title>Hello - {{user.first_name}}</title>
+</head>
+
+<body>
+  <div class="menu">
+    <ul>
+      <li class="profile">
+        <div class="img-box">
+          <img
+            src="{% if user.profile_picture %}{{ user.profile_picture }}{% else %}{% static 'profile_pictures/default.png' %}{% endif %}"
+            alt="Profile Image">
+        </div>
+        <h2>{{ user.first_name }}</h2>
+      </li>
+      <li>
+        <a href="{% url 'admin_dashboard' %}">
+          <i class="fas fa-home"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-user-group"></i>
+          <p>Users</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-chart-pie"></i>
+          <p>Charts</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-pen"></i>
+          <p>Blogs</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-cog"></i>
+          <p>Settings</p>
+        </a>
+      </li>
+      <li class="log-out">
+        <a href="#">
+          <i class="fas fa-sign-out"></i>
+          <p>Log Out</p>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+
+  <div class="content">
+    <div class="title-info">
+      <p>Dashboard</p>
+      <i class="fas fa-chart-bar"></i>
+    </div>
+    <div class="data-info">
+      <div class="box">
+        <i class="fas fa-user"></i>
+        <div class="data">
+          <p>Verified Doctors</p>
+          <span>100</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-user"></i>
+        <div class="data">
+          <p>Unverified Doctors</p>
+          <span>10</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-user"></i>
+        <div class="data">
+          <p>Patients</p>
+          <span>200</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fas fa-pen"></i>
+        <div class="data">
+          <p>Blogs</p>
+          <span>200</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="title-info">
+      <p>RECENT CHAT</p>
+      <i class="fas fa-table"></i>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>xyz</td>
+          <td><span class="price">Doctor</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>tre</td>
+          <td><span class="price">Doctor</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>gre</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">ACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>VVV</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>jjj</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">ACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>mmj</td>
+          <td><span class="price">Doctor</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+        <tr>
+          <td>ewd</td>
+          <td><span class="price">Patient</span></td>
+          <td><span class="count">INACTIVE</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+</body>
+
+</html>
