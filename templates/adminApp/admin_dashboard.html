@@ -3,12 +3,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OncoScan Admin Dashboard</title>
+  <title>Hello - {{user.first_name}}</title>
   <!-- Materialize CSS -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}">
+
+  <!-- Internal CSS -->
+  <style>
+    /* General Body Styles */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Side Nav Styles */
+    .side-nav.fixed {
+        background-color: #3949ab;
+        width: 240px;
+        padding-top: 10px;
+    }
+
+    .side-nav.fixed li a {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .side-nav.fixed li a:hover {
+        background-color: #303f9f;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .collapsible-header {
+        background-color: #3f51b5;
+        color: white;
+    }
+
+    .collapsible-body {
+        background-color: #e8eaf6;
+    }
+
+    /* Navbar Styles */
+    nav {
+        background-color: #3949ab !important;
+    }
+
+    nav .nav-wrapper .right li a {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    nav .nav-wrapper .breadcrumb {
+        font-weight: 500;
+    }
+
+    /* Card Styles */
+    .card {
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card .card-title {
+        font-size: 1.5rem;
+        color: #3949ab;
+    }
+
+    .card .material-icons {
+        font-size: 3rem;
+        color: #3949ab;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: #3949ab;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -31,10 +106,10 @@
         <div id="dash_users_body" class="collapsible-body">
           <ul>
             <li id="users_doctor">
-              <a class="waves-effect" href="{% url 'admin_doctors' %}">Doctors</a>
+              <a class="waves-effect" href="#">Doctors</a>
             </li>
             <li id="users_patient">
-              <a class="waves-effect" href="{% url 'admin_patients' %}">Patients</a>
+              <a class="waves-effect" href="#">Patients</a>
             </li>
           </ul>
         </div>
@@ -45,10 +120,10 @@
         <div id="dash_records_body" class="collapsible-body">
           <ul>
             <li id="patients_records">
-              <a class="waves-effect" href="{% url 'admin_records' %}">Records</a>
+              <a class="waves-effect" href="#">Records</a>
             </li>
             <li id="patients_reports">
-              <a class="waves-effect" href="{% url 'admin_reports' %}">Reports</a>
+              <a class="waves-effect" href="#">Reports</a>
             </li>
           </ul>
         </div>
@@ -59,7 +134,7 @@
   <!-- Main Content -->
   <header>
     <ul class="dropdown-content" id="user_dropdown">
-      <li><a class="indigo-text" href="{% url 'profile' %}">Profile</a></li>
+      <li><a class="indigo-text" href="#">Profile</a></li>
       <li><a class="indigo-text" href="{% url 'signout' %}">Logout</a></li>
     </ul>
 
@@ -90,13 +165,13 @@
         <div class="card" style="padding: 35px;">
           <div class="left card-title"><b>Doctor Management</b></div>
           <div class="row">
-            <a href="{% url 'admin_doctors' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">person</i>
                 <span class="indigo-text text-lighten-1"><h5>Doctors</h5></span>
               </div>
             </a>
-            <a href="{% url 'admin_degrees' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">people</i>
                 <span class="indigo-text text-lighten-1"><h5>Degree</h5></span>
@@ -110,13 +185,13 @@
         <div class="card" style="padding: 35px;">
           <div class="left card-title"><b>Patient Management</b></div>
           <div class="row">
-            <a href="{% url 'admin_patients' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">store</i>
                 <span class="indigo-text text-lighten-1"><h5>Patients</h5></span>
               </div>
             </a>
-            <a href="{% url 'admin_patient_history' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">assignment</i>
                 <span class="indigo-text text-lighten-1"><h5>History</h5></span>
@@ -132,13 +207,13 @@
         <div class="card" style="padding: 35px;">
           <div class="left card-title"><b>Website Management</b></div>
           <div class="row">
-            <a href="{% url 'admin_chatbot' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">local_offer</i>
                 <span class="indigo-text text-lighten-1"><h5>Chatbot</h5></span>
               </div>
             </a>
-            <a href="{% url 'admin_settings' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">loyalty</i>
                 <span class="indigo-text text-lighten-1"><h5>Settings</h5></span>
@@ -152,13 +227,13 @@
         <div class="card" style="padding: 35px;">
           <div class="left card-title"><b>Global Management</b></div>
           <div class="row">
-            <a href="{% url 'admin_visuals' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">view_list</i>
                 <span class="indigo-text text-lighten-1"><h5>Visuals</h5></span>
               </div>
             </a>
-            <a href="{% url 'admin_info' %}">
+            <a href="#">
               <div class="grey lighten-3 col s5 waves-effect" style="padding: 30px;">
                 <i class="indigo-text text-lighten-1 large material-icons">view_list</i>
                 <span class="indigo-text text-lighten-1"><h5>Info</h5></span>
