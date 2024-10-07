@@ -17,9 +17,9 @@
     <ul>
       <li class="profile">
         <div class="img-box">
-          <img
-            src="{% if user.profile_picture %}{{ user.profile_picture }}{% else %}{% static 'profile_pictures/default.png' %}{% endif %}"
-            alt="Profile Image">
+
+          <img src="{{ user.userprofile.profile_pictures.url }}" alt="Profile Picture">
+
         </div>
         <h2>{{ user.first_name }}</h2>
       </li>

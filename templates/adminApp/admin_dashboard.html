@@ -17,9 +17,10 @@
     <ul>
       <li class="profile">
         <div class="img-box">
-          <img
-            src="{% if user.profile_picture %}{{ user.profile_picture }}{% else %}{% static 'profile_pictures/default.png' %}{% endif %}"
-            alt="Profile Image">
+
+          <img {{ user.userprofile.profile_picture.url }} alt="Profile Picture" onerror="this.onerror=null;">
+
+
         </div>
         <h2>{{ user.first_name }}</h2>
       </li>
@@ -37,8 +38,8 @@
       </li>
       <li>
         <a href="#">
-          <i class="fas fa-chart-pie"></i>
-          <p>Charts</p>
+          <i class="fa-solid fa-message"></i>
+          <p>Chats</p>
         </a>
       </li>
       <li>
