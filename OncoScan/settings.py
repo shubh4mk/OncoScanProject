@@ -37,14 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'authentication.apps.AuthenticationConfig',
     'adminApp.apps.AdminappConfig',
     'doctorApp.apps.DoctorappConfig',
     'patientApp.apps.PatientappConfig',
-    
+    'chat.apps.ChatConfig',
+    'channels', 
 ]
+
+ASGI_APPLICATION = 'OncoScan.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
