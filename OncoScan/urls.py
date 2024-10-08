@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 from homepage.views import home
 from authentication.views import signin, signup, signout
-from adminApp.views import admin_dashboard
+from adminApp.views import admin_dashboard, doc_verification
 from doctorApp.views import doctor_dashboard
 from patientApp.views import patient_dashboard
 
@@ -18,6 +18,7 @@ urlpatterns = [
     path('admin_dashboard/', admin_dashboard, name="admin_dashboard"),
     path('doctor_dashboard/', doctor_dashboard, name="doctor_dashboard"),
     path('patient_dashboard/', patient_dashboard, name="patient_dashboard"),
+    path('doc_verification/', doc_verification, name="doc_verification"),
 ]
 
 if settings.DEBUG:
