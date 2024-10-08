@@ -9,6 +9,7 @@ from adminApp.views import admin_dashboard, doc_verification
 from doctorApp.views import doctor_dashboard
 from patientApp.views import patient_dashboard
 from chat.views import chat_interface
+from blog.views import blog_form
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,6 +22,7 @@ urlpatterns = [
     path('patient_dashboard/', patient_dashboard, name="patient_dashboard"),
     path('doc_verification/', doc_verification, name="doc_verification"),
     path('chat_interface/', chat_interface, name="chat_interface"),
+    path('blog_form/', blog_form, name="blog_form"),
 ]
 
 if settings.DEBUG:

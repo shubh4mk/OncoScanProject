@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'patientApp.apps.PatientappConfig',
     'chat.apps.ChatConfig',
     'channels', 
+    'blog.apps.BlogConfig',
 ]
 
 ASGI_APPLICATION = 'OncoScan.asgi.application'
