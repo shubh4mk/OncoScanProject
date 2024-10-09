@@ -5,3 +5,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def chat_interface(request):
     return render(request, 'chat/chat_interface.html')
+
+@login_required
+def chat_user(request):
+    return render(request, 'chat/chat_user.html')

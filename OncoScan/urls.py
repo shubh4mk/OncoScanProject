@@ -8,8 +8,8 @@ from authentication.views import signin, signup, signout
 from adminApp.views import admin_dashboard, doc_verification
 from doctorApp.views import doctor_dashboard
 from patientApp.views import patient_dashboard
-from chat.views import chat_interface
-from blog.views import blog_form
+from chat.views import chat_interface,chat_user
+from blog.views import blog_form,blog_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,7 +22,9 @@ urlpatterns = [
     path('patient_dashboard/', patient_dashboard, name="patient_dashboard"),
     path('doc_verification/', doc_verification, name="doc_verification"),
     path('chat_interface/', chat_interface, name="chat_interface"),
+    path('chat_user/', chat_user, name="chat_user"),
     path('blog_form/', blog_form, name="blog_form"),
+    path('blog_user/', blog_user, name="blog_user"),
 ]
 
 if settings.DEBUG:

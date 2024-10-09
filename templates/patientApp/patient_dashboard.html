@@ -1,65 +1,6 @@
-{% load static %}
+{% extends 'doctorApp/base.html' %} {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css\styles_dashboard.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <title>Hello - {{user.first_name}}</title>
-</head>
-
-<body>
-  <div class="menu">
-    <ul>
-      <li class="profile">
-        <div class="img-box">
-
-          <img src="{{ user.userprofile.profile_pictures.url }}" alt="Profile Picture">
-
-        </div>
-        <h2>{{ user.first_name }}</h2>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-upload"></i>
-          <p>Scan</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-message"></i>
-          <p>Chats</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fas fa-pen"></i>
-          <p>Blogs</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-circle-question"></i>
-          <p>Help</p>
-        </a>
-      </li>
-      <li class="log-out">
-        <a href="{% url 'signout' %}">
-          <i class="fas fa-sign-out"></i>
-          <p>Log Out</p>
-        </a>
-      </li>
-    </ul>
-
-  </div>
+{% block content %}
 
 
- 
-
-</body>
-
-</html>
+{% endblock content %}

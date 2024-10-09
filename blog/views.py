@@ -20,6 +20,20 @@ def blog_form(request):
         form = BlogPostForm()
     return render(request, 'blog/blog_form.html', {'form': form})
 
+@login_required
+def blog_user(request):
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST)
+        if form.is_valid():
+            blog_post = form.save(commit=False)  # Do not save yet
+            user_profile = UserProfile.objects.get(user=request.user)  # Get UserProfile for the current user
+            blog_post.author = user_profile  # Set the author to the UserProfile
+            blog_post.save()  # Now save it to the database
+            return redirect('index')  # Redirect to the index view after saving
+    else:
+        form = BlogPostForm()
+    return render(request, 'blog/blog_user.html', {'form': form})
+
 
 def index(request):
     # Get all blog posts and select 3 random ones

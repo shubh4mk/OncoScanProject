@@ -1,0 +1,61 @@
+{% extends 'doctorApp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <center><h1>Hello, Welcome to my chat site! {{request.user}}</h1></center>
+    <br>
+    <div class="chat__item__container" id="id_chat_item_container" style="font-size: 20px">
+        <br />
+        <input type="text" id="id_message_send_input" />
+        <button type="submit" id="id_message_send_button" disabled>Send Message</button>
+        <br />
+        <br />
+    </div>
+
+    <script>
+      const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+      const chatSocket = new WebSocket(protocol + "://" + window.location.host + "/");
+      
+      chatSocket.onopen = function (e) {
+        console.log("The connection was setup successfully!");
+      };
+      
+      chatSocket.onclose = function (e) {
+        console.log("Something unexpected happened!");
+      };
+      
+      document.querySelector("#id_message_send_input").focus();
+      
+      document.querySelector("#id_message_send_input").onkeyup = function (e) {
+        if (e.keyCode == 13) {
+          document.querySelector("#id_message_send_button").click();
+        }
+      };
+      
+      document.querySelector("#id_message_send_input").oninput = function () {
+        const messageInput = document.querySelector("#id_message_send_input").value.trim();
+        document.querySelector("#id_message_send_button").disabled = !messageInput;
+      };
+      
+      document.querySelector("#id_message_send_button").onclick = function (e) {
+        e.preventDefault();
+        var messageInput = document.querySelector("#id_message_send_input").value;
+        chatSocket.send(JSON.stringify({
+          message: messageInput,
+          username: "{{request.user.username}}"
+        }));
+      };
+      
+      chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        var div = document.createElement("div");
+        div.innerHTML = data.username + " : " + data.message;
+        document.querySelector("#id_message_send_input").value = "";
+        document.querySelector("#id_chat_item_container").appendChild(div);
+      };
+
+      chatSocket.onerror = function (error) {
+        console.error("WebSocket Error: ", error);
+      };
+    </script>
+{% endblock content %}
