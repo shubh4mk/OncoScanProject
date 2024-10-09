@@ -18,27 +18,21 @@
       <li class="profile">
         <div class="img-box">
 
-          <img src="{{ user.userprofile.profile_pictures }}" alt="Profile Picture">
+          <img src="{{ user.userprofile.profile_pictures.url }}" alt="Profile Picture">
 
         </div>
         <h2>{{ user.first_name }}</h2>
       </li>
       <li>
-        <a href="{% url 'admin_dashboard' %}">
-          <i class="fas fa-home"></i>
-          <p>Dashboard</p>
+        <a href="#">
+          <i class="fa-solid fa-upload"></i>
+          <p>Scan</p>
         </a>
       </li>
       <li>
         <a href="#">
-          <i class="fas fa-user-group"></i>
-          <p>Users</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fas fa-chart-pie"></i>
-          <p>Charts</p>
+          <i class="fa-solid fa-message"></i>
+          <p>Chats</p>
         </a>
       </li>
       <li>
@@ -49,12 +43,12 @@
       </li>
       <li>
         <a href="#">
-          <i class="fas fa-cog"></i>
-          <p>Settings</p>
+          <i class="fa-solid fa-circle-question"></i>
+          <p>Help</p>
         </a>
       </li>
       <li class="log-out">
-        <a href="#">
+        <a href="{% url 'signout' %}">
           <i class="fas fa-sign-out"></i>
           <p>Log Out</p>
         </a>
@@ -64,95 +58,7 @@
   </div>
 
 
-  <div class="content">
-    <div class="title-info">
-      <p>Dashboard</p>
-      <i class="fas fa-chart-bar"></i>
-    </div>
-    <div class="data-info">
-      <div class="box">
-        <i class="fas fa-user"></i>
-        <div class="data">
-          <p>Verified Doctors</p>
-          <span>100</span>
-        </div>
-      </div>
-      <div class="box">
-        <i class="fas fa-user"></i>
-        <div class="data">
-          <p>Unverified Doctors</p>
-          <span>10</span>
-        </div>
-      </div>
-      <div class="box">
-        <i class="fas fa-user"></i>
-        <div class="data">
-          <p>Patients</p>
-          <span>200</span>
-        </div>
-      </div>
-      <div class="box">
-        <i class="fas fa-pen"></i>
-        <div class="data">
-          <p>Blogs</p>
-          <span>200</span>
-        </div>
-      </div>
-
-    </div>
-    <div class="title-info">
-      <p>RECENT CHAT</p>
-      <i class="fas fa-table"></i>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>xyz</td>
-          <td><span class="price">Doctor</span></td>
-          <td><span class="count">INACTIVE</span></td>
-        </tr>
-        <tr>
-          <td>tre</td>
-          <td><span class="price">Doctor</span></td>
-          <td><span class="count">INACTIVE</span></td>
-        </tr>
-        <tr>
-          <td>gre</td>
-          <td><span class="price">Patient</span></td>
-          <td><span class="count">ACTIVE</span></td>
-        </tr>
-        <tr>
-          <td>VVV</td>
-          <td><span class="price">Patient</span></td>
-          <td><span class="count">INACTIVE</span></td>
-        </tr>
-        <tr>
-          <td>jjj</td>
-          <td><span class="price">Patient</span></td>
-          <td><span class="count">ACTIVE</span></td>
-        </tr>
-        <tr>
-          <td>mmj</td>
-          <td><span class="price">Doctor</span></td>
-          <td><span class="count">INACTIVE</span></td>
-        </tr>
-        <tr>
-          <td>ewd</td>
-          <td><span class="price">Patient</span></td>
-          <td><span class="count">INACTIVE</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-
+ 
 
 </body>
 
