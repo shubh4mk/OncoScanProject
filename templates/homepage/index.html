@@ -52,7 +52,7 @@
                             </div>
 
                             <h3 class="headline-sm card-title">
-                                <a href="#">Register Yourself</a>
+                                <a href="{% url 'signup' %}">Register Yourself</a>
                             </h3>
 
                             <p class="card-text">
@@ -75,7 +75,7 @@
                             </div>
 
                             <h3 class="headline-sm card-title">
-                                <a href="#">Login</a>
+                                <a href="{% url 'signin' %}">Login</a>
                             </h3>
 
                             <p class="card-text">
@@ -151,27 +151,37 @@
                     <h2 class="headline-md" data-reveal="left">Experienced Workers</h2>
 
                     <p class="section-text" data-reveal="left">
-                        Xyz zyz zyzyz zyzyz
+                        Our team is composed of highly experienced medical professionals who are committed to advancing cancer detection and care using cutting-edge technology.
                     </p>
 
                     <ul class="tab-list" data-reveal="left">
-
                         <li>
-                            <button class="tab-btn active">Vision</button>
+                          <a href="?tab=vision" class="tab-btn">Vision</a>
                         </li>
-
                         <li>
-                            <button class="tab-btn">Mission</button>
+                          <a href="?tab=mission" class="tab-btn">Mission</a>
                         </li>
-
                         <li>
-                            <button class="tab-btn">Strategy</button>
+                          <a href="?tab=strategy" class="tab-btn">Strategy</a>
                         </li>
-
-                    </ul>
+                      </ul>
+                
+                      <!-- Conditionally display the message based on query parameters -->
+                      <p class="tab-text" data-reveal="right" id="tab-content">
+                        {% if request.GET.tab == "vision" %}
+                          To revolutionize cancer detection and care through innovative, AI-powered solutions that improve early diagnosis and patient outcomes.
+                        {% elif request.GET.tab == "mission" %}
+                          Our mission is to provide accessible, precise, and reliable diagnostic tools that empower healthcare providers and patients in their fight against cancer.
+                        {% elif request.GET.tab == "strategy" %}
+                          Through continuous innovation, research, and partnerships, we aim to deliver AI-driven diagnostic systems that enhance medical decision-making.
+                        {% else %}
+                          Dedicated Medical Professionals
+                        {% endif %}
+                      </p>
+                
 
                     <p class="tab-text" data-reveal="right">
-                        Xyz zyz zyzyz zyzyz
+                        Dedicated Medical Professionals
                     </p>
 
                     <div class="wrapper">
@@ -181,25 +191,25 @@
                             <li class="about-item" data-reveal="left">
                                 <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                                <span class="span">Sonsectetur adipisicing elit</span>
+                                <span class="span">Experienced in AI & medical imaging</span>
                             </li>
 
                             <li class="about-item" data-reveal="left">
                                 <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                                <span class="span">Exercitation ullamco laboris</span>
+                                <span class="span">Committed to patient safety</span>
                             </li>
 
                             <li class="about-item" data-reveal="left">
                                 <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                                <span class="span">Eiusmod tempor incididunt</span>
+                                <span class="span">Delivering Results globally</span>
                             </li>
 
                             <li class="about-item" data-reveal="left">
                                 <ion-icon name="checkmark-circle-outline"></ion-icon>
 
-                                <span class="span">Aolore magna aliqua</span>
+                                <span class="span">Striving for excellence in cancer care</span>
                             </li>
 
                         </ul>
@@ -226,7 +236,7 @@
                 <ul class="grid-list">
 
                     <li>
-                        <p class="section-subtitle title-lg" id="listing-label" data-reveal="left">Doctors Listig</p>
+                        <p class="section-subtitle title-lg" id="listing-label" data-reveal="left">Doctors Listing</p>
 
                         <h2 class="headline-md" data-reveal="left">Browse by specialist</h2>
                     </li>
@@ -349,7 +359,7 @@
                     News & Article
                 </p>
 
-                <h2 class="section-title headline-md text-center" data-reveal="bottom">Latest Articles</h2>
+                <h2 class="section-title headline-md text-center" data-reveal="bottom">Latest Articles & Research</h2>
 
                 <ul class="grid-list">
 

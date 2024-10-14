@@ -570,7 +570,7 @@
     gap: 20px 15px;
   }
   
-  .tab-btn {
+  /* .tab-btn {
     background-color: var(--alice-blue);
     color: var(--midnight-green);
     padding: 7px 30px;
@@ -581,7 +581,23 @@
   .tab-btn.active {
     background-color: var(--verdigris);
     color: var(--white);
+  } */
+
+  .tab-btn {
+    background-color: var(--alice-blue);
+    color: var(--midnight-green);
+    padding: 7px 30px;
+    border-radius: var(--radius-6);
+    font-weight: var(--fw-700);
+    cursor: pointer; /* Ensures the cursor changes to a pointer on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
   }
+  
+  .tab-btn:hover {
+    background-color: var(--verdigris); /* Change background color on hover */
+    color: var(--white); /* Change text color on hover */
+  }
+  
   
   .tab-text {
     color: var(--midnight-green);
