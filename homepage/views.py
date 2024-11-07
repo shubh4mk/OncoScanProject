@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from authentication.models import UserProfile
-
+from blog.models import BlogPost
 # Create your views here.
 
 def home(request):
@@ -18,3 +18,7 @@ def home(request):
         'user_type': user_type  # Pass the user_type to the template
     }
     return render(request, "homepage/index.html", context)
+
+def index(request):
+    blog_posts = BlogPost.objects.all().order_by('-created_at')
+    return render(request, 'index.html', {'blog_posts': blog_posts})

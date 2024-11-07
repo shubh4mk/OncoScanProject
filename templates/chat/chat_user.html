@@ -2,60 +2,83 @@
 {% load static %}
 
 {% block content %}
-    <center><h1>Hello, Welcome to my chat site! {{request.user}}</h1></center>
+    <center>
+        <h1>Hello, Welcome to my chat site, {{ request.user }}!</h1>
+    </center>
     <br>
-    <div class="chat__item__container" id="id_chat_item_container" style="font-size: 20px">
-        <br />
-        <input type="text" id="id_message_send_input" />
-        <button type="submit" id="id_message_send_button" disabled>Send Message</button>
-        <br />
-        <br />
+
+    <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message..." autofocus />
+            <button type="button" id="send-button" disabled>Send</button>
+        </div>
     </div>
 
-    <script>
-      const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-      const chatSocket = new WebSocket(protocol + "://" + window.location.host + "/");
-      
-      chatSocket.onopen = function (e) {
-        console.log("The connection was setup successfully!");
-      };
-      
-      chatSocket.onclose = function (e) {
-        console.log("Something unexpected happened!");
-      };
-      
-      document.querySelector("#id_message_send_input").focus();
-      
-      document.querySelector("#id_message_send_input").onkeyup = function (e) {
-        if (e.keyCode == 13) {
-          document.querySelector("#id_message_send_button").click();
+    <style>
+        /* Container styling */
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
         }
-      };
-      
-      document.querySelector("#id_message_send_input").oninput = function () {
-        const messageInput = document.querySelector("#id_message_send_input").value.trim();
-        document.querySelector("#id_message_send_button").disabled = !messageInput;
-      };
-      
-      document.querySelector("#id_message_send_button").onclick = function (e) {
-        e.preventDefault();
-        var messageInput = document.querySelector("#id_message_send_input").value;
-        chatSocket.send(JSON.stringify({
-          message: messageInput,
-          username: "{{request.user.username}}"
-        }));
-      };
-      
-      chatSocket.onmessage = function (e) {
-        const data = JSON.parse(e.data);
-        var div = document.createElement("div");
-        div.innerHTML = data.username + " : " + data.message;
-        document.querySelector("#id_message_send_input").value = "";
-        document.querySelector("#id_chat_item_container").appendChild(div);
-      };
 
-      chatSocket.onerror = function (error) {
-        console.error("WebSocket Error: ", error);
-      };
-    </script>
+        /* Messages area */
+        .chat-messages {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Message styling */
+        .chat-message {
+            padding: 8px 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            background-color: #e0e7ff;
+            color: #333;
+        }
+
+        /* Chat input area */
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* Input field */
+        #message-input {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        /* Send button */
+        #send-button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Disabled send button */
+        #send-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
 {% endblock content %}
